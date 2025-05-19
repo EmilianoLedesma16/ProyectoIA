@@ -4,8 +4,8 @@ from frozenLake.visualizer import launch_frozenlake_gui
 from rumania.visualizer import launch_rumania_gui
 # from tic_tac_toe.gui import launch_tictactoe_gui
 
-ctk.set_appearance_mode("light")  # o "dark"
-ctk.set_default_color_theme("blue")  # Puedes cambiar el tema
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("blue")
 
 class MainMenu(ctk.CTk):
     def __init__(self):
