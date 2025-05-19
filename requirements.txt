@@ -1,0 +1,6 @@
+customtkinter
+numpy
+matplotlib
+networkx
+pygame
+gym
