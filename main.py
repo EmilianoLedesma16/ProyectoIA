@@ -2,7 +2,7 @@ import customtkinter as ctk
 
 from frozenLake.visualizer import launch_frozenlake_gui
 from rumania.visualizer import launch_rumania_gui
-# from tic_tac_toe.gui import launch_tictactoe_gui
+from ticTacToe.gui import launch_tictactoe_gui
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
@@ -39,9 +39,7 @@ class MainMenu(ctk.CTk):
         launch_rumania_gui()
 
     def open_tictactoe(self):
-        ctk.CTkMessagebox(title="Gato (Tic-Tac-Toe)", message="Aquí se abriría la interfaz de Gato.", icon="info")
-        # Cuando tengas el módulo, reemplaza la línea anterior por:
-        # launch_tictactoe_gui()
+        launch_tictactoe_gui()
 
 if __name__ == "__main__":
     app = MainMenu()
