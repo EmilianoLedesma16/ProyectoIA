@@ -2,7 +2,7 @@ from collections import deque
 
 def bfs(env, return_explored=False):
     start = env.start
-    goal = env.goal
+    goal = env.goal # no se usa, pero clarifica un poco el código
     queue = deque()
     queue.append((start, [start]))
     visited = set()

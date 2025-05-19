@@ -6,7 +6,7 @@ def astar_search(G, heuristics, start, goal):
     visited = set()
 
     while frontier:
-        est_total, cost_so_far, path = heapq.heappop(frontier)
+        _, cost_so_far, path = heapq.heappop(frontier)
         current = path[-1]
         if current == goal:
             return path

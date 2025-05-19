@@ -1,20 +1,11 @@
-"""
-Definición del entorno FrozenLake como una cuadrícula.
-0 = espacio libre, 1 = agujero, 2 = inicio, 3 = meta
-"""
-
-try:
-    import gymnasium as gym
-    import numpy as np
-except ImportError:
-    gym = None
-
+""" Definición del entorno FrozenLake como un tablero cuadriculado.
+0 = espacio libre, 1 = agujero, 2 = inicio, 3 = meta """
 
 class FrozenLakeEnv:
     def __init__(self, grid=None):
         # Tablero 4x4 por defecto
         self.default_4x4 = [
-            [2, 0, 0, 1],
+            [0, 0, 2, 1],
             [0, 1, 0, 1],
             [0, 0, 0, 1],
             [1, 0, 0, 3]
@@ -22,7 +13,7 @@ class FrozenLakeEnv:
         # Tablero 8x8 de ejemplo
         self.default_8x8 = [
             [2,0,0,0,0,1,0,0],
-            [0,1,1,0,1,0,1,0],
+            [0,1,0,0,1,0,1,0],
             [0,0,0,1,0,0,1,0],
             [1,1,0,0,0,1,0,0],
             [0,0,1,1,0,0,1,0],
@@ -38,21 +29,6 @@ class FrozenLakeEnv:
         self.m = len(self.grid[0])
         self.start = self.find_value(2)
         self.goal = self.find_value(3)
-
-    @classmethod
-    def from_gym(cls, size=4, is_slippery=False):
-        """
-        Crea el entorno a partir de gym (opcional).
-        size: 4 u 8
-        is_slippery: False para entorno determinista
-        """
-        if gym is None:
-            raise ImportError("gym no está instalado.")
-        env = gym.make(f"FrozenLake-v1", is_slippery=is_slippery, map_name=f"{size}x{size}")
-        desc = env.unwrapped.desc.astype(str)
-        mapping = {"S": 2, "F": 0, "H": 1, "G": 3}
-        grid = [[mapping[c] for c in row] for row in desc]
-        return cls(grid=grid)
 
     def set_grid(self, grid):
         self.grid = grid

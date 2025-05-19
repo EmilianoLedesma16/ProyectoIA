@@ -1,5 +1,4 @@
 import customtkinter as ctk
-from tkinter import messagebox
 from frozenLake.enviroment import FrozenLakeEnv
 from frozenLake.bfs import bfs
 from frozenLake.dfs import dfs
@@ -57,7 +56,7 @@ class FrozenLakeGUI(ctk.CTkToplevel):
                 x1, y1 = x0+cell_size, y0+cell_size
                 val = self.env.grid[i][j]
                 # Colores: libre, hueco, inicio, meta
-                color = "#bde0fe" if val == 0 else "#ffafcc" if val == 1 else "#b7e4c7" if val == 2 else "#ffd60a"
+                color = "#b1d9eb" if val == 0 else "#ffafcc" if val == 1 else "#b7e4c7" if val == 2 else "#ffd60a"
                 self.canvas.create_rectangle(x0, y0, x1, y1, fill=color, outline="black")
         # Celdas exploradas
         if explored:
@@ -70,12 +69,12 @@ class FrozenLakeGUI(ctk.CTkToplevel):
             for (i, j) in path:
                 x0, y0 = j*cell_size, i*cell_size
                 x1, y1 = x0+cell_size, y0+cell_size
-                self.canvas.create_rectangle(x0, y0, x1, y1, fill="#90e0ef", outline="black")
+                self.canvas.create_rectangle(x0, y0, x1, y1, fill="#ffd60a", outline="black")
         # Redibuja inicio y meta
         si, sj = self.env.start
         gi, gj = self.env.goal
         self.canvas.create_rectangle(sj*cell_size, si*cell_size, (sj+1)*cell_size, (si+1)*cell_size, fill="#b7e4c7", outline="black")
-        self.canvas.create_rectangle(gj*cell_size, gi*cell_size, (gj+1)*cell_size, (gi+1)*cell_size, fill="#ffd60a", outline="black")
+        self.canvas.create_rectangle(gj*cell_size, gi*cell_size, (gj+1)*cell_size, (gi+1)*cell_size, fill="#ff0a0a", outline="black")
 
     def solve_and_animate(self):
         alg = self.alg_var.get()
